@@ -17,31 +17,31 @@
 from __future__ import print_function
 from future.standard_library import install_aliases
 install_aliases()
-
+ 
 from urllib.parse import urlparse, urlencode
 from urllib.request import urlopen, Request
 from urllib.error import HTTPError
-
+ 
 import json
 import os
-
+ 
 from flask import Flask
 from flask import request
 from flask import make_response
-
+ 
 # Flask app should start in global layout
 app = Flask(__name__)
-
-
+ 
+ 
 @app.route('/webhook', methods=['POST'])
 def webhook():
     req = request.get_json(silent=True, force=True)
-
+ 
     print("Request:")
     print(json.dumps(req, indent=4))
-
+ 
     res = processRequest(req)
-
+ 
     res = json.dumps(res, indent=4)
     # print(res)
     r = make_response(res)
@@ -63,15 +63,27 @@ def processRequest(req):
         res = makeWebhookResult(data)
     elif req.get("result").get("action") == "checkBalance":
         data = req
-        res = makeWebhookResultForAccountStatement(data)
+        res = makeWebhookResultForGetAtomicNumber(data)
+    #elif req.get("result").get("action") == "getChemicalSymbol":
+    #    data = req
+    #    res = makeWebhookResultForGetChemicalSymbol(data)
     else:
-        return {} 
+        return {}
     return res
 
-def makeWebhookResultForAccountStatement(data):
-    element = data.get("result").get("parameters").get("accounts")
-    speech = 'test' + element
-
+def makeWebhookResultForGetAtomicNumber(data):
+    element = data.get("result").get("parameters").get("elementname")
+    atomicNumber = 'Unknown'
+    if element == 'Carbon':
+        atomicNumber = '6'
+    elif element == 'Hydrogen':
+        atomicNumber = '1'
+    elif element == 'Nitrogen':
+        atomicNumber = '7'
+    elif element == 'Oxygen':
+        atomicNumber = '8'
+    speech = 'The atomic number of '+element+' is '+atomicNumber
+ 
     return {
         "speech": speech,
         "displayText": speech,
