@@ -69,7 +69,8 @@ def processRequest(req):
     return res
 
 def makeWebhookResultForAccountStatement(data):
-    speech = 'test'
+    element = data.get("result").get("parameters").get("accounts")
+    speech = 'test' + element
 
     return {
         "speech": speech,
