@@ -59,7 +59,7 @@ def processRequest(req):
         result = urlopen(yql_url).read()
         data = json.loads(result)
         res = makeWebhookResult(data)
-    elif req.get("result").get("action") == "accountStatement":
+    elif req.get("result").get("action") == "checkBalance":
         data = req
         res = makeWebhookResultForAccountStatement(data)
     else:
