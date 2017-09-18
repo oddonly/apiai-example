@@ -1,0 +1,38 @@
+{
+  "id": "e4d9b466-c5dd-4edc-b4a4-113c31394cd9",
+  "timestamp": "2017-09-18T07:50:14.957Z",
+  "lang": "en",
+  "result": {
+    "source": "agent",
+    "resolvedQuery": "weather in london",
+    "action": "yahooWeatherForecast",
+    "actionIncomplete": false,
+    "parameters": {
+      "geo-city": "London"
+    },
+    "contexts": [],
+    "metadata": {
+      "intentId": "abeae678-a2a2-4624-8db7-97d052c598ed",
+      "webhookUsed": "true",
+      "webhookForSlotFillingUsed": "true",
+      "webhookResponseTime": 2975,
+      "intentName": "weather"
+    },
+    "fulfillment": {
+      "speech": "Current conditions in the City \n        London, United Kingdom are Partly cloudy with a projected high of\n        17°C or 63°F and a low of \n        12°C or 53°F on \n        2017-09-18.",
+      "displayText": "Current conditions in the City \n        London, United Kingdom are Partly cloudy with a projected high of\n        17°C or 63°F and a low of \n        12°C or 53°F on \n        2017-09-18.",
+      "messages": [
+        {
+          "type": 0,
+          "speech": "Current conditions in the City \n        London, United Kingdom are Partly cloudy with a projected high of\n        17°C or 63°F and a low of \n        12°C or 53°F on \n        2017-09-18."
+        }
+      ]
+    },
+    "score": 1
+  },
+  "status": {
+    "code": 200,
+    "errorType": "success"
+  },
+  "sessionId": "8e75cc73-05d4-4723-9fb6-d6b9bf3dda35"
+}
