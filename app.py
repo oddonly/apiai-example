@@ -61,34 +61,10 @@ def processRequest(req):
         result = urlopen(yql_url).read()
         data = json.loads(result)
         res = makeWebhookResult(data)
-    elif req.get("result").get("action") == "checkBalance":
-        data = req
-        res = makeWebhookResultForGetAtomicNumber(data)
-    #elif req.get("result").get("action") == "getChemicalSymbol":
-    #    data = req
-    #    res = makeWebhookResultForGetChemicalSymbol(data)
     else:
         return {}
     return res
 
-def makeWebhookResultForGetAtomicNumber(data):
-    element = data.get("result").get("parameters").get("elementname")
-    atomicNumber = 'Unknown'
-    if element == 'Carbon':
-        atomicNumber = '6'
-    elif element == 'Hydrogen':
-        atomicNumber = '1'
-    elif element == 'Nitrogen':
-        atomicNumber = '7'
-    elif element == 'Oxygen':
-        atomicNumber = '8'
-    speech = 'The atomic number of '+element+' is '+atomicNumber
- 
-    return {
-        "speech": speech,
-        "displayText": speech,
-        "source": "webhookdata"
-    }
 
 def makeYqlQuery(req):
     result = req.get("result")
@@ -125,9 +101,10 @@ def makeWebhookResult(data):
 
     # print(json.dumps(item, indent=4))
 
-    speech = "Today in " + location.get('city') + ": " + condition.get('text') + \
-             ", the temperature is " + condition.get('temp') + " " + units.get('temperature')
+    # speech = "Today in " + location.get('city') + ": " + condition.get('text') + \
+             # ", the temperature is " + condition.get('temp') + " " + units.get('temperature')
 
+    speech = "test"
     print("Response:")
     print(speech)
 
